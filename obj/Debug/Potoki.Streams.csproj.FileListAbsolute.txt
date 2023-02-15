@@ -1,0 +1,7 @@
+D:\Разработка\C#\Potoki.Streams\bin\Debug\Potoki.Streams.exe
+D:\Разработка\C#\Potoki.Streams\bin\Debug\Potoki.Streams.pdb
+D:\Разработка\C#\Potoki.Streams\obj\Debug\Potoki.Streams.csproj.AssemblyReference.cache
+D:\Разработка\C#\Potoki.Streams\obj\Debug\Potoki.Streams.csproj.SuggestedBindingRedirects.cache
+D:\Разработка\C#\Potoki.Streams\obj\Debug\Potoki.Streams.csproj.CoreCompileInputs.cache
+D:\Разработка\C#\Potoki.Streams\obj\Debug\Potoki.Streams.exe
+D:\Разработка\C#\Potoki.Streams\obj\Debug\Potoki.Streams.pdb
