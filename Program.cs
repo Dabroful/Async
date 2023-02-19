@@ -2,6 +2,7 @@
 using System;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Potoki.Streams
 {
@@ -9,33 +10,49 @@ namespace Potoki.Streams
     {
         public static void Main(string[] args)
         {
-            Thread thread1 = new Thread(new ThreadStart(DoWork1));                       //создаем поток для метода DoWork без параметров
-            thread1.Start();                                                             //запускаем этот поток
+            #region Создание потоков вручную
+            // Thread thread1 = new Thread(new ThreadStart(DoWork1));                       //создаем поток для метода DoWork без параметров
+            // thread1.Start();                                                             //запускаем этот поток
+            //
+            // Thread thread2 = new Thread(new ParameterizedThreadStart(DoWork2));          //создаем поток для метода DoWork с параметрами
+            // thread2.Start(int.MaxValue);
+            //
+            // int j = 0;                                                                   //цикл, который нагружает систему
+            // for (int i = 0; i < int.MaxValue; i++)
+            // {
+            //     j++;
+            //     if (i % 10000 == 0)
+            //     {
+            //         Console.WriteLine("Main");
+            //     }
+            // }
+            #endregion
+
+            Console.WriteLine("Begin main");
+            DoWorkAsync();                                                                    //вызов асинхронного метода
+            Console.WriteLine("Continue main");
             
-            Thread thread2 = new Thread(new ParameterizedThreadStart(DoWork2));          //создаем поток для метода DoWork с параметрами
-            thread2.Start(int.MaxValue);
-            
-            int j = 0;                                                                   //цикл, который нагружает систему
-            for (int i = 0; i < int.MaxValue; i++)
+            for (int i = 0; i < 10; i++)
             {
-                j++;
-                if (i % 10000 == 0)
-                {
-                    Console.WriteLine("Main");
-                }
+                Console.WriteLine("Main");
             }
+            Console.WriteLine("End main");
+            Console.ReadLine();
         }
 
+        static async Task DoWorkAsync()                                                       //асинхронный метод DoWorkAsync, который будет вызыватт асинхронно DoWork1
+        {
+            Console.WriteLine("Begin async");
+            await Task.Run(() => DoWork1());                                                  //запуск метода
+            Console.WriteLine("End async");
+        }
+        
         static void DoWork1()
         {
-            int j = 0;
-            for (int i = 0; i < int.MaxValue; i++)
+
+            for (int i = 0; i < 10; i++)
             {
-                j++;
-                if (i % 10000 == 0)
-                {
-                    Console.WriteLine("DoWork1");
-                }
+                Console.WriteLine("DoWork1");
             }
         }
         
